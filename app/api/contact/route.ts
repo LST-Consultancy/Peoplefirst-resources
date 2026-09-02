@@ -6,10 +6,14 @@ export const runtime = "nodejs";
 
 type ContactPayload = {
   name: string;
+  company?: string;
   email: string;
   phone?: string;
-  company?: string;
-  inquiryType?: string;
+  website?: string;
+  vertical?: string;
+  recruiters?: string;
+  support?: string;
+  volume?: string;
   message: string;
 };
 
@@ -48,13 +52,17 @@ async function sendEmail(entry: ContactPayload & { receivedAt: string }) {
     from: `"PeopleFirst Resources Website" <${process.env.SMTP_USER}>`,
     to: process.env.CONTACT_TO_EMAIL,
     replyTo: entry.email,
-    subject: `New website inquiry from ${entry.name}`,
+    subject: `New RPO inquiry from ${entry.name}${entry.company ? ` (${entry.company})` : ""}`,
     text: [
       `Name: ${entry.name}`,
-      `Email: ${entry.email}`,
-      `Phone: ${entry.phone || "-"}`,
       `Company: ${entry.company || "-"}`,
-      `Inquiry type: ${entry.inquiryType || "-"}`,
+      `Work Email: ${entry.email}`,
+      `Phone: ${entry.phone || "-"}`,
+      `Company Website: ${entry.website || "-"}`,
+      `Staffing Vertical: ${entry.vertical || "-"}`,
+      `Number of Recruiters Needed: ${entry.recruiters || "-"}`,
+      `Recruiting Support Needed: ${entry.support || "-"}`,
+      `Current Job / Hiring Volume: ${entry.volume || "-"}`,
       "",
       "Message:",
       entry.message,
@@ -77,7 +85,7 @@ export async function POST(request: Request) {
 
   if (!name || !email || !message) {
     return NextResponse.json(
-      { error: "Name, email, and message are required." },
+      { error: "Name, work email, and message are required." },
       { status: 400 }
     );
   }
@@ -88,10 +96,14 @@ export async function POST(request: Request) {
 
   const entry = {
     name,
+    company: body.company?.trim() || "",
     email,
     phone: body.phone?.trim() || "",
-    company: body.company?.trim() || "",
-    inquiryType: body.inquiryType?.trim() || "",
+    website: body.website?.trim() || "",
+    vertical: body.vertical?.trim() || "",
+    recruiters: body.recruiters?.trim() || "",
+    support: body.support?.trim() || "",
+    volume: body.volume?.trim() || "",
     message,
     receivedAt: new Date().toISOString(),
   };

@@ -16,9 +16,32 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "PeopleFirst Resources | U.S. Staffing & Recruitment Solutions",
+  title: "Offshore RPO Solutions for U.S. Staffing Firms | PeopleFirst Resources",
   description:
-    "PeopleFirst Resources connects U.S. businesses with top talent through contract, contract-to-hire, and direct hire staffing solutions.",
+    "PeopleFirst Resources provides dedicated offshore recruiters, sourcers, and RPO solutions for U.S. staffing firms. Build your recruiting team from India with the people, tools, and support you need.",
+  keywords: [
+    "offshore RPO",
+    "offshore RPO services",
+    "recruitment process outsourcing",
+    "offshore recruiters",
+    "offshore recruitment services",
+    "offshore recruiters for U.S. staffing firms",
+    "offshore recruiters for staffing agencies",
+    "RPO services for staffing companies",
+    "recruitment outsourcing for staffing firms",
+    "dedicated offshore recruiters",
+    "offshore sourcers",
+    "offshore recruiters from India",
+    "IT staffing recruiters",
+    "recruitment staffing services",
+    "remote recruitment team",
+  ],
+  openGraph: {
+    title: "Offshore RPO Solutions for U.S. Staffing Firms | PeopleFirst Resources",
+    description:
+      "Dedicated offshore recruiters, sourcers, and RPO solutions for U.S. staffing firms. You choose the team size; we provide the people, tools, infrastructure, and support.",
+    type: "website",
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

@@ -1,0 +1,36 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Privacy Policy | PeopleFirst Resources",
+  description: "Privacy Policy for PeopleFirst Resources.",
+};
+
+export default function PrivacyPolicyPage() {
+  return (
+    <section className="mx-auto max-w-3xl px-6 py-20 lg:px-8 lg:py-28">
+      <h1 className="text-3xl font-bold tracking-tight text-ink-800 sm:text-4xl">
+        Privacy Policy
+      </h1>
+      <p className="mt-6 text-base leading-7 text-ink-600">
+        Our full privacy policy is being finalised and will be published here shortly. If you
+        have any questions about how PeopleFirst Resources handles the information you submit
+        through this website, please contact us and we will be glad to help.
+      </p>
+      <div className="mt-10 flex flex-wrap gap-4">
+        <a
+          href="mailto:info@peoplefirstresources.com"
+          className="rounded-full bg-blue-500 px-6 py-3 text-sm font-semibold text-white transition-shadow duration-300 hover:shadow-lg hover:shadow-blue-500/30"
+        >
+          Contact Us
+        </a>
+        <Link
+          href="/"
+          className="rounded-full border border-line px-6 py-3 text-sm font-semibold text-ink-800 transition-colors duration-300 hover:border-blue-500 hover:text-blue-600"
+        >
+          Back to Home
+        </Link>
+      </div>
+    </section>
+  );
+}

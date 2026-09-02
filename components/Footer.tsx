@@ -1,82 +1,62 @@
 import Link from "next/link";
 import { Reveal } from "@/components/Reveal";
 
-const serviceLinks = [
-  "Contract Staffing",
-  "Direct Hire",
-  "Contract-to-Hire",
-  "Payroll & EOR Services",
-];
-
-const quickLinks = [
-  { href: "/about", label: "About Us" },
-  { href: "/services", label: "Services" },
-  { href: "/jobs", label: "Job Openings" },
-  { href: "/contact", label: "Contact" },
+const navLinks = [
+  { href: "/#home", label: "Home" },
+  { href: "/#about", label: "About Us" },
+  { href: "/#services", label: "Services" },
+  { href: "/#industries", label: "Industries" },
+  { href: "/#how-it-works", label: "How It Works" },
+  { href: "/#why-us", label: "Why Us" },
+  { href: "/#build-your-team", label: "Build Your Team" },
+  { href: "/#faq", label: "FAQ" },
+  { href: "/#contact", label: "Contact Us" },
 ];
 
 export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="mt-auto overflow-hidden bg-ink-900 text-slate-300">
-      <Reveal className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-6 py-14 sm:grid-cols-2 lg:grid-cols-4 lg:px-8">
-        <div>
+    <footer className="mt-auto bg-ink-900 text-slate-300">
+      <Reveal className="mx-auto grid max-w-7xl gap-10 px-6 py-14 lg:grid-cols-3 lg:px-8">
+        <div className="lg:col-span-1">
           <div className="flex items-center gap-2">
             <span className="flex h-9 w-9 items-center justify-center rounded-full bg-blue-500 text-sm font-bold text-white">
               PF
             </span>
             <span className="text-lg font-bold text-white">PeopleFirst Resources</span>
           </div>
-          <p className="mt-4 text-sm leading-6 text-slate-400">
-            A U.S. staffing solution connecting great companies with great people —
-            contract, contract-to-hire, and direct hire placements nationwide.
+          <p className="mt-4 max-w-sm text-sm leading-6 text-slate-400">
+            PeopleFirst Resources — Offshore RPO &amp; Recruitment Solutions for U.S. Staffing
+            Firms
           </p>
+          <a
+            href="/#contact"
+            className="mt-6 inline-block rounded-full bg-blue-500 px-5 py-2.5 text-sm font-semibold text-white transition-shadow duration-300 hover:shadow-lg hover:shadow-blue-500/30"
+          >
+            Talk to an RPO Expert
+          </a>
         </div>
 
-        <div>
-          <h3 className="text-sm font-semibold uppercase tracking-wide text-white">
-            Quick Links
-          </h3>
-          <ul className="mt-4 space-y-3">
-            {quickLinks.map((link) => (
+        <div className="lg:col-span-1">
+          <h3 className="text-sm font-semibold uppercase tracking-wide text-white">Navigation</h3>
+          <ul className="mt-4 grid grid-cols-2 gap-x-6 gap-y-3">
+            {navLinks.map((link) => (
               <li key={link.href}>
-                <Link
+                <a
                   href={link.href}
                   className="text-sm text-slate-400 transition-colors hover:text-white"
                 >
                   {link.label}
-                </Link>
+                </a>
               </li>
             ))}
           </ul>
         </div>
 
-        <div>
-          <h3 className="text-sm font-semibold uppercase tracking-wide text-white">
-            Services
-          </h3>
-          <ul className="mt-4 space-y-3">
-            {serviceLinks.map((service) => (
-              <li key={service} className="text-sm text-slate-400">
-                {service}
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div>
-          <h3 className="text-sm font-semibold uppercase tracking-wide text-white">
-            Get in Touch
-          </h3>
+        <div className="lg:col-span-1">
+          <h3 className="text-sm font-semibold uppercase tracking-wide text-white">Get in Touch</h3>
           <ul className="mt-4 space-y-3 text-sm text-slate-400">
-            <li>1200 Main Street, Suite 400</li>
-            <li>Dallas, TX 75201</li>
-            <li>
-              <a href="tel:+18005551234" className="transition-colors hover:text-white">
-                (800) 555-1234
-              </a>
-            </li>
             <li>
               <a
                 href="mailto:info@peoplefirstresources.com"
@@ -104,7 +84,14 @@ export default function Footer() {
       <div className="border-t border-white/10">
         <div className="mx-auto flex max-w-7xl flex-col gap-2 px-6 py-6 text-xs text-slate-500 sm:flex-row sm:items-center sm:justify-between lg:px-8">
           <p>© {year} PeopleFirst Resources. All rights reserved.</p>
-          <p>Equal Opportunity Employer · E-Verify Participant</p>
+          <div className="flex gap-5">
+            <Link href="/privacy-policy" className="transition-colors hover:text-slate-300">
+              Privacy Policy
+            </Link>
+            <Link href="/terms" className="transition-colors hover:text-slate-300">
+              Terms
+            </Link>
+          </div>
         </div>
       </div>
     </footer>
