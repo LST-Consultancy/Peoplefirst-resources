@@ -16,6 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://peoplefirstresources.com"),
+  alternates: { canonical: "/" },
   title: "Offshore RPO Solutions for U.S. Staffing Firms | PeopleFirst Resources",
   description:
     "PeopleFirst Resources provides dedicated offshore recruiters, sourcers, and RPO solutions for U.S. staffing firms. Build your recruiting team from India with the people, tools, and support you need.",
@@ -41,6 +43,8 @@ export const metadata: Metadata = {
     description:
       "Dedicated offshore recruiters, sourcers, and RPO solutions for U.S. staffing firms. You choose the team size; we provide the people, tools, infrastructure, and support.",
     type: "website",
+    url: "https://peoplefirstresources.com",
+    siteName: "PeopleFirst Resources",
   },
 };
 
