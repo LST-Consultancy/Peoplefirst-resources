@@ -15,7 +15,7 @@ export default function Industries() {
     <section id="industries" className="bg-surface-alt py-20 lg:py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <Reveal className="max-w-3xl">
-          <p className="text-sm font-semibold uppercase tracking-widest text-blue-600">
+          <p className="text-sm font-semibold uppercase tracking-widest text-accent-600">
             Industries
           </p>
           <h2 className="mt-2 text-3xl font-bold tracking-tight text-ink-800 sm:text-4xl">
@@ -32,9 +32,9 @@ export default function Industries() {
           {industries.map((industry) => (
             <RevealItem
               key={industry}
-              className="flex h-full items-center gap-3 rounded-2xl border border-line bg-white p-5 transition-all duration-300 hover:-translate-y-1 hover:border-blue-500/40 hover:shadow-lg hover:shadow-black/5"
+              className="flex h-full items-center gap-3 rounded-2xl border border-line bg-white p-5 transition-all duration-300 hover:-translate-y-1 hover:border-accent-500/40 hover:shadow-lg hover:shadow-black/5"
             >
-              <span className="h-2 w-2 shrink-0 rounded-full bg-blue-500" />
+              <span className="h-2 w-2 shrink-0 rounded-full bg-accent-500" />
               <span className="text-sm font-semibold text-ink-800">{industry}</span>
             </RevealItem>
           ))}
@@ -43,7 +43,7 @@ export default function Industries() {
         <Reveal className="mt-12" delay={0.1}>
           <a
             href="#contact"
-            className="group inline-flex items-center gap-1.5 rounded-full bg-blue-500 px-6 py-3 text-sm font-semibold text-white transition-shadow duration-300 hover:shadow-lg hover:shadow-blue-500/30"
+            className="group inline-flex items-center gap-1.5 rounded-full bg-accent-500 px-6 py-3 text-sm font-semibold text-white transition-shadow duration-300 hover:shadow-lg hover:shadow-accent-500/30"
           >
             Tell Us What You Recruit For
             <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>

@@ -4,7 +4,7 @@ export default function About() {
   return (
     <section id="about" className="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-24">
       <Reveal className="max-w-3xl">
-        <p className="text-sm font-semibold uppercase tracking-widest text-blue-600">About Us</p>
+        <p className="text-sm font-semibold uppercase tracking-widest text-accent-600">About Us</p>
         <h2 className="mt-2 text-3xl font-bold tracking-tight text-ink-800 sm:text-4xl">
           About PeopleFirst Resources
         </h2>
@@ -34,7 +34,7 @@ export default function About() {
           </p>
           <a
             href="#build-your-team"
-            className="group mt-8 inline-flex items-center gap-1.5 rounded-full bg-ink-800 px-6 py-3 text-sm font-semibold text-white transition-colors duration-300 hover:bg-blue-500"
+            className="group mt-8 inline-flex items-center gap-1.5 rounded-full bg-ink-800 px-6 py-3 text-sm font-semibold text-white transition-colors duration-300 hover:bg-accent-500"
           >
             Build Your Recruiting Team
             <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>

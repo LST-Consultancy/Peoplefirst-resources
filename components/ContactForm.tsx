@@ -6,7 +6,7 @@ import { AnimatePresence, motion } from "framer-motion";
 type Status = "idle" | "submitting" | "success" | "error";
 
 const fieldClass =
-  "mt-1.5 w-full rounded-lg border border-line bg-white px-3.5 py-2.5 text-sm text-ink-800 transition-all duration-200 focus:border-blue-500 focus:outline-none focus:ring-4 focus:ring-blue-500/10";
+  "mt-1.5 w-full rounded-lg border border-line bg-white px-3.5 py-2.5 text-sm text-ink-800 transition-all duration-200 focus:border-accent-500 focus:outline-none focus:ring-4 focus:ring-accent-500/10";
 
 const labelClass = "block text-sm font-medium text-ink-800";
 
@@ -212,7 +212,7 @@ export default function ContactForm() {
               disabled={status === "submitting"}
               whileHover={{ scale: status === "submitting" ? 1 : 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="rounded-full bg-blue-500 px-6 py-3 text-sm font-semibold text-white transition-shadow duration-300 hover:shadow-lg hover:shadow-blue-500/30 disabled:cursor-not-allowed disabled:opacity-60"
+              className="rounded-full bg-accent-500 px-6 py-3 text-sm font-semibold text-white transition-shadow duration-300 hover:shadow-lg hover:shadow-accent-500/30 disabled:cursor-not-allowed disabled:opacity-60"
             >
               {status === "submitting" ? (
                 <span className="flex items-center justify-center gap-2">
@@ -229,7 +229,7 @@ export default function ContactForm() {
             </motion.button>
             <a
               href="mailto:info@peoplefirstresources.com?subject=Request%20a%20Consultation"
-              className="rounded-full border border-line px-6 py-3 text-sm font-semibold text-ink-800 transition-colors duration-300 hover:border-blue-500 hover:text-blue-600"
+              className="rounded-full border border-line px-6 py-3 text-sm font-semibold text-ink-800 transition-colors duration-300 hover:border-accent-500 hover:text-accent-600"
             >
               Request a Consultation
             </a>

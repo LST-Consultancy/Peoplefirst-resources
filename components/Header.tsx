@@ -1,6 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "framer-motion";
+import Image from "next/image";
 import { useEffect, useState, type MouseEvent } from "react";
 
 const navLinks = [
@@ -80,14 +81,27 @@ export default function Header() {
       >
         <a
           href="/#home"
-          className="group flex items-center gap-2"
+          aria-label="PeopleFirst Resources — home"
+          className="group flex items-center gap-2.5"
           onClick={(e) => handleNavClick(e, "/#home")}
         >
-          <span className="flex h-9 w-9 items-center justify-center rounded-full bg-ink-800 text-sm font-bold text-white transition-transform duration-300 group-hover:scale-105">
-            PF
-          </span>
-          <span className="text-base font-bold tracking-tight text-ink-800 sm:text-lg">
-            PeopleFirst <span className="font-normal text-ink-600">Resources</span>
+          <Image
+            src="/logo-mark.png"
+            alt=""
+            width={760}
+            height={332}
+            loading="eager"
+            sizes="120px"
+            className="h-7 w-auto transition-transform duration-300 group-hover:scale-105 sm:h-8"
+          />
+          <span className="leading-none">
+            <span className="block text-base font-extrabold tracking-tight sm:text-lg">
+              <span className="text-brand-navy">PEOPLE</span>{" "}
+              <span className="text-accent-500">FIRST</span>
+            </span>
+            <span className="mt-1 block text-[9px] font-semibold uppercase tracking-[0.3em] text-ink-600">
+              Resources
+            </span>
           </span>
         </a>
 
@@ -100,12 +114,12 @@ export default function Header() {
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
                 className={`group relative rounded-full px-3 py-2 text-[13px] font-medium transition-colors ${
-                  isActive ? "text-blue-600" : "text-ink-600 hover:text-ink-800"
+                  isActive ? "text-accent-600" : "text-ink-600 hover:text-ink-800"
                 }`}
               >
                 {link.label}
                 <span
-                  className={`absolute inset-x-3 -bottom-0.5 h-px bg-blue-500 transition-transform duration-300 ease-out ${
+                  className={`absolute inset-x-3 -bottom-0.5 h-px bg-accent-500 transition-transform duration-300 ease-out ${
                     isActive ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
                   }`}
                 />
@@ -117,7 +131,7 @@ export default function Header() {
         <a
           href="/#contact"
           onClick={(e) => handleNavClick(e, "/#contact")}
-          className="hidden shrink-0 rounded-full bg-ink-800 px-5 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:bg-blue-500 hover:shadow-lg hover:shadow-blue-500/20 xl:block"
+          className="hidden shrink-0 rounded-full bg-ink-800 px-5 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:bg-accent-500 hover:shadow-lg hover:shadow-accent-500/20 xl:block"
         >
           Talk to an RPO Expert
         </a>

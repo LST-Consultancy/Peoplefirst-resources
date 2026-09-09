@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Reveal } from "@/components/Reveal";
 
@@ -20,11 +21,24 @@ export default function Footer() {
     <footer className="mt-auto bg-ink-900 text-slate-300">
       <Reveal className="mx-auto grid max-w-7xl gap-10 px-6 py-14 lg:grid-cols-3 lg:px-8">
         <div className="lg:col-span-1">
-          <div className="flex items-center gap-2">
-            <span className="flex h-9 w-9 items-center justify-center rounded-full bg-blue-500 text-sm font-bold text-white">
-              PF
+          <div className="flex items-center gap-3">
+            <Image
+              src="/logo-mark.png"
+              alt=""
+              width={760}
+              height={332}
+              sizes="140px"
+              className="h-9 w-auto"
+            />
+            <span className="leading-none">
+              <span className="block text-lg font-extrabold tracking-tight">
+                <span className="text-white">PEOPLE</span>{" "}
+                <span className="text-brand-sky">FIRST</span>
+              </span>
+              <span className="mt-1 block text-[9px] font-semibold uppercase tracking-[0.3em] text-slate-400">
+                Resources
+              </span>
             </span>
-            <span className="text-lg font-bold text-white">PeopleFirst Resources</span>
           </div>
           <p className="mt-4 max-w-sm text-sm leading-6 text-slate-400">
             PeopleFirst Resources — Offshore RPO &amp; Recruitment Solutions for U.S. Staffing
@@ -32,7 +46,7 @@ export default function Footer() {
           </p>
           <a
             href="/#contact"
-            className="mt-6 inline-block rounded-full bg-blue-500 px-5 py-2.5 text-sm font-semibold text-white transition-shadow duration-300 hover:shadow-lg hover:shadow-blue-500/30"
+            className="mt-6 inline-block rounded-full bg-accent-500 px-5 py-2.5 text-sm font-semibold text-white transition-shadow duration-300 hover:shadow-lg hover:shadow-accent-500/30"
           >
             Talk to an RPO Expert
           </a>
@@ -72,7 +86,7 @@ export default function Footer() {
                 key={social}
                 href="#"
                 aria-label={social}
-                className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10 text-xs font-semibold transition-colors hover:bg-blue-500"
+                className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10 text-xs font-semibold transition-colors hover:bg-accent-500"
               >
                 {social[0]}
               </a>

@@ -6,7 +6,7 @@ export default function Contact() {
     <section id="contact" className="bg-surface-alt py-20 lg:py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <Reveal className="max-w-3xl">
-          <p className="text-sm font-semibold uppercase tracking-widest text-blue-600">
+          <p className="text-sm font-semibold uppercase tracking-widest text-accent-600">
             Contact Us
           </p>
           <h2 className="mt-2 text-3xl font-bold tracking-tight text-ink-800 sm:text-4xl">

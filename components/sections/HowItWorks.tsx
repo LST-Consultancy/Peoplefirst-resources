@@ -43,7 +43,7 @@ export default function HowItWorks() {
   return (
     <section id="how-it-works" className="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-24">
       <Reveal className="max-w-3xl">
-        <p className="text-sm font-semibold uppercase tracking-widest text-blue-600">
+        <p className="text-sm font-semibold uppercase tracking-widest text-accent-600">
           How It Works
         </p>
         <h2 className="mt-2 text-3xl font-bold tracking-tight text-ink-800 sm:text-4xl">
@@ -55,7 +55,7 @@ export default function HowItWorks() {
         {steps.map((step) => (
           <RevealItem key={step.number} className="relative">
             <div className="flex items-baseline gap-3">
-              <span className="text-4xl font-bold text-blue-500">{step.number}</span>
+              <span className="text-4xl font-bold text-accent-500">{step.number}</span>
               <h3 className="text-lg font-semibold text-ink-800">{step.title}</h3>
             </div>
             <p className="mt-3 text-sm leading-6 text-ink-600">{step.description}</p>
@@ -67,7 +67,7 @@ export default function HowItWorks() {
       <Reveal className="mt-12" delay={0.1}>
         <a
           href="#contact"
-          className="group inline-flex items-center gap-1.5 rounded-full bg-ink-800 px-6 py-3 text-sm font-semibold text-white transition-colors duration-300 hover:bg-blue-500"
+          className="group inline-flex items-center gap-1.5 rounded-full bg-ink-800 px-6 py-3 text-sm font-semibold text-white transition-colors duration-300 hover:bg-accent-500"
         >
           Start With a Conversation
           <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>

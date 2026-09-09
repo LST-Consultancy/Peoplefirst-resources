@@ -41,7 +41,7 @@ export default function RecruitingServices() {
   return (
     <section id="recruiting-services" className="mx-auto max-w-7xl px-6 py-20 lg:px-8 lg:py-24">
       <Reveal className="max-w-3xl">
-        <p className="text-sm font-semibold uppercase tracking-widest text-blue-600">
+        <p className="text-sm font-semibold uppercase tracking-widest text-accent-600">
           Recruiting Services
         </p>
         <h2 className="mt-2 text-3xl font-bold tracking-tight text-ink-800 sm:text-4xl">
@@ -59,9 +59,9 @@ export default function RecruitingServices() {
         {capabilities.map((item, index) => (
           <RevealItem
             key={item.title}
-            className="group h-full rounded-2xl border border-line bg-white p-6 transition-all duration-300 hover:-translate-y-1.5 hover:border-blue-500/40 hover:shadow-xl hover:shadow-black/5"
+            className="group h-full rounded-2xl border border-line bg-white p-6 transition-all duration-300 hover:-translate-y-1.5 hover:border-accent-500/40 hover:shadow-xl hover:shadow-black/5"
           >
-            <span className="text-xs font-semibold text-blue-600">
+            <span className="text-xs font-semibold text-accent-600">
               {String(index + 1).padStart(2, "0")}
             </span>
             <h3 className="mt-2 text-lg font-semibold text-ink-800">{item.title}</h3>
@@ -73,7 +73,7 @@ export default function RecruitingServices() {
       <Reveal className="mt-12" delay={0.1}>
         <a
           href="#contact"
-          className="group inline-flex items-center gap-1.5 rounded-full bg-ink-800 px-6 py-3 text-sm font-semibold text-white transition-colors duration-300 hover:bg-blue-500"
+          className="group inline-flex items-center gap-1.5 rounded-full bg-ink-800 px-6 py-3 text-sm font-semibold text-white transition-colors duration-300 hover:bg-accent-500"
         >
           Find the Right Recruiting Support
           <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>

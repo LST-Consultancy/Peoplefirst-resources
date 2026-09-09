@@ -12,7 +12,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-sm font-semibold uppercase tracking-widest text-blue-400"
+          className="text-sm font-semibold uppercase tracking-widest text-brand-sky"
         >
           Offshore RPO &amp; Recruitment Solutions
         </motion.p>
@@ -46,7 +46,7 @@ export default function Hero() {
         >
           <a
             href="#build-your-team"
-            className="group rounded-full bg-blue-500 px-6 py-3 text-sm font-semibold text-white transition-shadow duration-300 hover:shadow-lg hover:shadow-blue-500/30"
+            className="group rounded-full bg-accent-500 px-6 py-3 text-sm font-semibold text-white transition-shadow duration-300 hover:shadow-lg hover:shadow-accent-500/30"
           >
             <span className="flex items-center gap-1.5">
               Build Your Recruiting Team

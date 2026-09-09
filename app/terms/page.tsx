@@ -20,13 +20,13 @@ export default function TermsPage() {
       <div className="mt-10 flex flex-wrap gap-4">
         <a
           href="mailto:info@peoplefirstresources.com"
-          className="rounded-full bg-blue-500 px-6 py-3 text-sm font-semibold text-white transition-shadow duration-300 hover:shadow-lg hover:shadow-blue-500/30"
+          className="rounded-full bg-accent-500 px-6 py-3 text-sm font-semibold text-white transition-shadow duration-300 hover:shadow-lg hover:shadow-accent-500/30"
         >
           Contact Us
         </a>
         <Link
           href="/"
-          className="rounded-full border border-line px-6 py-3 text-sm font-semibold text-ink-800 transition-colors duration-300 hover:border-blue-500 hover:text-blue-600"
+          className="rounded-full border border-line px-6 py-3 text-sm font-semibold text-ink-800 transition-colors duration-300 hover:border-accent-500 hover:text-accent-600"
         >
           Back to Home
         </Link>

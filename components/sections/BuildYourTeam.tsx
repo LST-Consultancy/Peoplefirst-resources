@@ -29,7 +29,7 @@ export default function BuildYourTeam() {
       />
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
         <Reveal className="max-w-3xl">
-          <p className="text-sm font-semibold uppercase tracking-widest text-blue-400">
+          <p className="text-sm font-semibold uppercase tracking-widest text-brand-sky">
             Build Your Team
           </p>
           <h2 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
@@ -47,7 +47,7 @@ export default function BuildYourTeam() {
           {options.map((option) => (
             <RevealItem
               key={option.title}
-              className="h-full rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-blue-400/40 hover:bg-white/10"
+              className="h-full rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-brand-sky/40 hover:bg-white/10"
             >
               <h3 className="text-lg font-semibold text-white">{option.title}</h3>
               <p className="mt-3 text-sm leading-6 text-slate-300">{option.description}</p>
@@ -62,7 +62,7 @@ export default function BuildYourTeam() {
           </p>
           <a
             href="#contact"
-            className="group mt-8 inline-flex items-center gap-1.5 rounded-full bg-blue-500 px-6 py-3 text-sm font-semibold text-white transition-shadow duration-300 hover:shadow-lg hover:shadow-blue-500/30"
+            className="group mt-8 inline-flex items-center gap-1.5 rounded-full bg-accent-500 px-6 py-3 text-sm font-semibold text-white transition-shadow duration-300 hover:shadow-lg hover:shadow-accent-500/30"
           >
             Let&apos;s Design Your Team
             <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>

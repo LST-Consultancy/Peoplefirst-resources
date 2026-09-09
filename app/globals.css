@@ -26,11 +26,16 @@ section[id] {
   --color-line: #dadce0;
   --color-line-soft: #e8eaed;
 
-  /* accent: blue (primary), green + amber (secondary status accents) */
-  --color-blue-50: #e8f0fe;
-  --color-blue-500: #1a73e8;
-  --color-blue-600: #1557b0;
-  --color-blue-500-rgb: 26, 115, 232;
+  /* accent: brand teal, darkened for contrast (primary).
+     Derived from the logo teal #0097b2 by holding its OKLCh hue (216deg) and
+     chroma while lowering lightness -- the raw logo teal is only 3.46:1 on
+     white, which fails WCAG AA for body and label text.
+       accent-500  4.79:1  solid fills, white button text, icons, rules
+       accent-600  6.64:1  small text and labels on white */
+  --color-accent-50: #e4f4f8;
+  --color-accent-500: #007d97;
+  --color-accent-600: #00657e;
+  --color-accent-500-rgb: 0, 125, 151;
 
   --color-green-50: #e6f4ea;
   --color-green-500: #188038;
@@ -38,6 +43,15 @@ section[id] {
   --color-amber-50: #fef7e0;
   --color-amber-500: #f9ab00;
   --color-amber-500-rgb: 249, 171, 0;
+
+  /* brand: sampled from the PeopleFirst Resources logo artwork.
+     On white these are decorative only -- teal is 3.46:1 and sky 2.14:1, both
+     below AA, so use the accent scale for text on light surfaces.
+     On the dark ink-900 sections the reverse holds: brand-sky is the readable
+     accent there (8.30:1) and is the on-dark counterpart of accent-600. */
+  --color-brand-navy: #01425a;
+  --color-brand-teal: #0097b2;
+  --color-brand-sky: #48c0d8;
 }
 
 @theme inline {
@@ -58,15 +72,19 @@ section[id] {
   --color-line: var(--color-line);
   --color-line-soft: var(--color-line-soft);
 
-  --color-blue-50: var(--color-blue-50);
-  --color-blue-500: var(--color-blue-500);
-  --color-blue-600: var(--color-blue-600);
+  --color-accent-50: var(--color-accent-50);
+  --color-accent-500: var(--color-accent-500);
+  --color-accent-600: var(--color-accent-600);
 
   --color-green-50: var(--color-green-50);
   --color-green-500: var(--color-green-500);
 
   --color-amber-50: var(--color-amber-50);
   --color-amber-500: var(--color-amber-500);
+
+  --color-brand-navy: var(--color-brand-navy);
+  --color-brand-teal: var(--color-brand-teal);
+  --color-brand-sky: var(--color-brand-sky);
 }
 
 body {
@@ -76,7 +94,7 @@ body {
 }
 
 ::selection {
-  background: var(--color-blue-500);
+  background: var(--color-accent-500);
   color: #fff;
 }
 
@@ -105,7 +123,7 @@ body {
 }
 
 .text-gradient {
-  background: linear-gradient(100deg, #ffffff 20%, var(--color-blue-500) 60%, var(--color-green-500) 90%);
+  background: linear-gradient(100deg, #ffffff 20%, var(--color-brand-sky) 60%, var(--color-brand-teal) 90%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
