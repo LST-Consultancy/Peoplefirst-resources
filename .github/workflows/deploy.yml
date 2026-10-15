@@ -1,0 +1,62 @@
+name: Deploy to VPS
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-vps
+  cancel-in-progress: false
+
+env:
+  DEPLOY_DIR: /docker/peoplefirst-staffing
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configure SSH
+        env:
+          VPS_SSH_KEY: ${{ secrets.VPS_SSH_KEY }}
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+        run: |
+          mkdir -p ~/.ssh
+          printf '%s\n' "$VPS_SSH_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -H "$VPS_HOST" >> ~/.ssh/known_hosts
+
+      - name: Write production .env
+        env:
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+          CONTACT_TO_EMAIL: ${{ secrets.CONTACT_TO_EMAIL }}
+        run: |
+          {
+            echo "SMTP_HOST=$SMTP_HOST"
+            echo "SMTP_PORT=$SMTP_PORT"
+            echo "SMTP_USER=$SMTP_USER"
+            echo "SMTP_PASS=$SMTP_PASS"
+            echo "CONTACT_TO_EMAIL=$CONTACT_TO_EMAIL"
+          } > .env
+
+      - name: Sync code to VPS
+        env:
+          TARGET: ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}
+        run: |
+          SSH="ssh -i ~/.ssh/deploy_key"
+          $SSH "$TARGET" "mkdir -p $DEPLOY_DIR"
+          rsync -az --delete -e "$SSH" \
+            --exclude .git --exclude node_modules --exclude .next --exclude '*.bak-*' \
+            ./ "$TARGET:$DEPLOY_DIR/"
+
+      - name: Build and restart container
+        env:
+          TARGET: ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}
+        run: |
+          ssh -i ~/.ssh/deploy_key "$TARGET" \
+            "cd $DEPLOY_DIR && docker compose up -d --build --remove-orphans && docker image prune -f"

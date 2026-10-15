@@ -1,6 +1,7 @@
 services:
   app:
-    image: lstconsultancy/peoplefirst-staffing:latest
+    build: .
+    image: peoplefirst-staffing:latest
     container_name: peoplefirst-staffing
     restart: unless-stopped
     ports:
