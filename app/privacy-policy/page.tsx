@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/privacy-policy" },
   title: "Privacy Policy | PeopleFirst Resources",
   description: "Privacy Policy for PeopleFirst Resources.",
 };

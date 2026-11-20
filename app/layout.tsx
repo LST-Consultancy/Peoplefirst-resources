@@ -17,10 +17,9 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://peoplefirstresources.com"),
-  alternates: { canonical: "/" },
-  title: "Offshore RPO Solutions for U.S. Staffing Firms | PeopleFirst Resources",
+  title: "RPO & Offshore Recruiters for U.S. Staffing Firms | PeopleFirst",
   description:
-    "PeopleFirst Resources provides dedicated offshore recruiters, sourcers, and RPO solutions for U.S. staffing firms. Build your recruiting team from India with the people, tools, and support you need.",
+    "Recruitment process outsourcing (RPO) for U.S. staffing firms. Hire dedicated offshore recruiters and sourcers from India, starting with one recruiter. We provide the tools and support.",
   keywords: [
     "offshore RPO",
     "offshore RPO services",

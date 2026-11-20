@@ -21,6 +21,11 @@ services:
       - traefik.http.routers.peoplefirst.entrypoints=websecure
       - traefik.http.routers.peoplefirst.tls.certresolver=letsencrypt
       - traefik.http.services.peoplefirst.loadbalancer.server.port=3000
+      # 301 www -> apex so Google sees one host, not two copies of the site
+      - traefik.http.routers.peoplefirst.middlewares=peoplefirst-www
+      - traefik.http.middlewares.peoplefirst-www.redirectregex.regex=^https?://www\.peoplefirstresources\.com/(.*)
+      - traefik.http.middlewares.peoplefirst-www.redirectregex.replacement=https://peoplefirstresources.com/$${1}
+      - traefik.http.middlewares.peoplefirst-www.redirectregex.permanent=true
     networks:
       - default
       - traefik-proxy

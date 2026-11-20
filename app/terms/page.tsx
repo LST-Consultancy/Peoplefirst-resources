@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/terms" },
   title: "Terms | PeopleFirst Resources",
   description: "Terms of use for the PeopleFirst Resources website.",
 };
