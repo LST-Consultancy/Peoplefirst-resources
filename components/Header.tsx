@@ -2,7 +2,8 @@
 
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "framer-motion";
 import Image from "next/image";
-import { useEffect, useState, type MouseEvent } from "react";
+import { usePathname } from "next/navigation";
+import { useEffect, useRef, useState, type MouseEvent } from "react";
 
 const navLinks = [
   { href: "/#home", label: "Home" },
@@ -19,11 +20,20 @@ const navLinks = [
 export default function Header() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const [activeId, setActiveId] = useState("home");
   const { scrollY } = useScroll();
+  const lastY = useRef(0);
+  const isHome = usePathname() === "/";
 
   useMotionValueEvent(scrollY, "change", (latest) => {
-    setScrolled(latest > 12);
+    setScrolled(latest > 80);
+    // hide while scrolling down, reveal on any upward scroll (ignore small jitter)
+    const delta = latest - lastY.current;
+    if (Math.abs(delta) > 6) {
+      setHidden(delta > 0 && latest > 400);
+      lastY.current = latest;
+    }
   });
 
   useEffect(() => {
@@ -64,12 +74,15 @@ export default function Header() {
   }
 
   return (
+    <>
+    {/* the header is fixed so the home hero can sit underneath it; other pages need the space back */}
+    {!isHome && <div aria-hidden className="h-[73px]" />}
     <motion.header
       initial={{ y: -80, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-      className={`sticky top-0 z-50 border-b transition-colors duration-300 ${
-        scrolled
+      animate={{ y: hidden && !open ? "-100%" : 0, opacity: 1 }}
+      transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+      className={`fixed inset-x-0 top-0 z-50 border-b transition-colors duration-300 ${
+        scrolled || !isHome || open
           ? "border-line bg-white/85 backdrop-blur-xl"
           : "border-transparent bg-white/50 backdrop-blur-md"
       }`}
@@ -199,5 +212,6 @@ export default function Header() {
         )}
       </AnimatePresence>
     </motion.header>
+    </>
   );
 }
