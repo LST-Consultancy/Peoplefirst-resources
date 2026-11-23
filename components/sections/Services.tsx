@@ -1,17 +1,22 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
+import Link from "next/link";
 import { useRef, useState, type KeyboardEvent } from "react";
 import { Reveal } from "@/components/Reveal";
 
-const services = [
+type Service = { title: string; description: string; href?: string };
+
+const services: Service[] = [
   {
     title: "Dedicated Recruiters",
+    href: "/services/offshore-recruiters",
     description:
       "Experienced offshore recruiters who become an extension of your staffing team and work according to your recruiting process, culture, working style, and expectations.",
   },
   {
     title: "Talent Sourcers",
+    href: "/services/offshore-sourcers",
     description:
       "Dedicated sourcing professionals focused on identifying, engaging, and building qualified candidate pipelines for your open positions.",
   },
@@ -22,16 +27,19 @@ const services = [
   },
   {
     title: "Full-Cycle RPO",
+    href: "/services/recruitment-process-outsourcing",
     description:
       "A dedicated offshore recruiting team supporting the recruitment lifecycle from sourcing and screening through candidate engagement, submissions, follow-up, and recruiting coordination.",
   },
   {
     title: "Partial / Hybrid RPO",
+    href: "/services/recruitment-process-outsourcing",
     description:
       "Add offshore recruiting capacity to specific parts of your existing process while your internal team continues to handle the rest.",
   },
   {
     title: "Project & High-Volume RPO",
+    href: "/services/recruitment-process-outsourcing",
     description:
       "Scale recruiting support for high-volume hiring, new accounts, urgent hiring needs, or time-bound recruiting projects.",
   },
@@ -187,7 +195,7 @@ export default function Services() {
                   {current.title}
                 </h3>
                 <p className="mt-4 max-w-xl text-base leading-7 text-ink-600">{current.description}</p>
-                <div className="mt-auto pt-10">
+                <div className="mt-auto flex flex-wrap items-center gap-x-6 gap-y-4 pt-10">
                   <a
                     href="#contact"
                     className="group inline-flex items-center gap-1.5 rounded-full bg-accent-500 px-6 py-3 text-sm font-semibold text-white transition-shadow duration-300 hover:shadow-lg hover:shadow-accent-500/30"
@@ -195,6 +203,14 @@ export default function Services() {
                     Discuss Your RPO Requirements
                     <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
                   </a>
+                  {current.href && (
+                    <Link
+                      href={current.href}
+                      className="text-sm font-semibold text-accent-600 underline-offset-4 hover:underline"
+                    >
+                      Learn more about {current.title.toLowerCase()}
+                    </Link>
+                  )}
                 </div>
               </motion.div>
             </AnimatePresence>

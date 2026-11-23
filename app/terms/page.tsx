@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/terms" },
-  title: "Terms | PeopleFirst Resources",
+  title: "Website Terms of Use | PeopleFirst Resources",
   description: "Terms of use for the PeopleFirst Resources website.",
 };
 

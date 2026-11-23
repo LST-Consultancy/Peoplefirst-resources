@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Reveal } from "@/components/Reveal";
+import { services } from "@/lib/services";
 
 const navLinks = [
   { href: "/#home", label: "Home" },
@@ -11,6 +12,7 @@ const navLinks = [
   { href: "/#why-us", label: "Why Us" },
   { href: "/#build-your-team", label: "Build Your Team" },
   { href: "/#faq", label: "FAQ" },
+  { href: "/blog", label: "Blog" },
   { href: "/#contact", label: "Contact Us" },
 ];
 
@@ -32,7 +34,7 @@ export default function Footer() {
 
   return (
     <footer className="mt-auto bg-ink-900 text-slate-300">
-      <Reveal className="mx-auto grid max-w-7xl gap-10 px-6 py-14 lg:grid-cols-3 lg:px-8">
+      <Reveal className="mx-auto grid max-w-7xl gap-10 px-6 py-14 lg:grid-cols-4 lg:px-8">
         <div className="lg:col-span-1">
           <div className="flex items-center gap-3">
             <Image
@@ -76,6 +78,26 @@ export default function Footer() {
                 >
                   {link.label}
                 </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="lg:col-span-1">
+          <h3 className="text-sm font-semibold uppercase tracking-wide text-white">
+            <Link href="/services" className="transition-colors hover:text-brand-sky">
+              Services
+            </Link>
+          </h3>
+          <ul className="mt-4 space-y-3">
+            {services.map((service) => (
+              <li key={service.slug}>
+                <Link
+                  href={`/services/${service.slug}`}
+                  className="text-sm text-slate-400 transition-colors hover:text-white"
+                >
+                  {service.name}
+                </Link>
               </li>
             ))}
           </ul>

@@ -256,6 +256,116 @@ body {
   animation: spin-slow 8s linear infinite;
 }
 
+/* ---- hero headline: words rise out of a mask ----
+ * Pure CSS so it starts on first paint instead of waiting for hydration;
+ * a JS start state left the headline (the LCP element) hidden until then. */
+@keyframes word-rise {
+  from {
+    transform: translateY(110%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+.animate-word-rise {
+  animation: word-rise 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* ---- long-form article typography (blog posts) ---- */
+.prose-pf {
+  color: var(--color-ink-600);
+  font-size: 1.0625rem;
+  line-height: 1.8;
+}
+.prose-pf > * + * {
+  margin-top: 1.25em;
+}
+.prose-pf .lead {
+  font-size: 1.2rem;
+  line-height: 1.75;
+  color: var(--color-ink-800);
+}
+.prose-pf h2 {
+  margin-top: 2.4em;
+  font-size: 1.75rem;
+  line-height: 1.25;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-ink-800);
+}
+.prose-pf h3 {
+  margin-top: 1.8em;
+  font-size: 1.25rem;
+  line-height: 1.35;
+  font-weight: 600;
+  color: var(--color-ink-800);
+}
+.prose-pf h2 + *,
+.prose-pf h3 + * {
+  margin-top: 0.75em;
+}
+.prose-pf strong {
+  color: var(--color-ink-800);
+  font-weight: 600;
+}
+.prose-pf a {
+  color: var(--color-accent-600);
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.prose-pf a:hover {
+  color: var(--color-accent-500);
+}
+.prose-pf ul,
+.prose-pf ol {
+  padding-left: 1.4em;
+}
+.prose-pf ul {
+  list-style: disc;
+}
+.prose-pf ol {
+  list-style: decimal;
+}
+.prose-pf li + li {
+  margin-top: 0.5em;
+}
+.prose-pf li::marker {
+  color: var(--color-accent-500);
+}
+.prose-pf .table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--color-line);
+  border-radius: 1rem;
+}
+.prose-pf table {
+  width: 100%;
+  min-width: 34rem;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+.prose-pf th,
+.prose-pf td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--color-line-soft);
+}
+.prose-pf thead th {
+  background: var(--color-surface-alt);
+  color: var(--color-ink-800);
+  font-weight: 600;
+}
+.prose-pf tbody th {
+  color: var(--color-ink-800);
+  font-weight: 600;
+}
+.prose-pf tbody tr:last-child th,
+.prose-pf tbody tr:last-child td {
+  border-bottom: 0;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -264,5 +374,8 @@ body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+  .animate-word-rise {
+    animation: none;
   }
 }

@@ -14,8 +14,12 @@ const navLinks = [
   { href: "/#why-us", label: "Why Us" },
   { href: "/#build-your-team", label: "Build Your Team" },
   { href: "/#faq", label: "FAQ" },
+  { href: "/blog", label: "Blog" },
   { href: "/#contact", label: "Contact" },
 ];
+
+// Section anchors that also have their own page, highlighted while you're on it.
+const pageForAnchor: Record<string, string> = { "/#services": "/services" };
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -24,7 +28,14 @@ export default function Header() {
   const [activeId, setActiveId] = useState("home");
   const { scrollY } = useScroll();
   const lastY = useRef(0);
-  const isHome = usePathname() === "/";
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+
+  function isLinkActive(href: string) {
+    const page = href.startsWith("/#") ? pageForAnchor[href] : href;
+    if (page && (pathname === page || pathname.startsWith(`${page}/`))) return true;
+    return isHome && activeId === href.replace("/#", "");
+  }
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     setScrolled(latest > 80);
@@ -120,7 +131,7 @@ export default function Header() {
 
         <nav className="hidden items-center gap-0.5 xl:flex">
           {navLinks.map((link) => {
-            const isActive = activeId === link.href.replace("/#", "");
+            const isActive = isLinkActive(link.href);
             return (
               <a
                 key={link.href}

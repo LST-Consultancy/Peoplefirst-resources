@@ -1,6 +1,3 @@
-"use client";
-
-import { motion, useReducedMotion } from "framer-motion";
 import { Fragment } from "react";
 
 type Segment = { text: string; className?: string };
@@ -8,6 +5,11 @@ type Segment = { text: string; className?: string };
 /*
  * Headline that rises in word by word, each word sliding up out of a mask.
  * Segments let part of the line carry its own style (e.g. a gradient accent).
+ *
+ * The animation is CSS (.animate-word-rise in globals.css), not framer-motion,
+ * so it runs from first paint without waiting for JavaScript. The headline is
+ * the page's largest element, and keeping it hidden until hydration delayed
+ * Largest Contentful Paint. Reduced-motion users get the text with no animation.
  */
 export default function WordReveal({
   segments,
@@ -18,7 +20,6 @@ export default function WordReveal({
   delay?: number;
   stagger?: number;
 }) {
-  const reduceMotion = useReducedMotion();
   let index = 0;
 
   return (
@@ -33,14 +34,12 @@ export default function WordReveal({
               return (
                 <Fragment key={`${s}-${w}`}>
                   <span className="inline-block overflow-hidden pb-[0.12em] align-top -mb-[0.12em]">
-                    <motion.span
-                      className={`inline-block ${segment.className ?? ""}`}
-                      initial={reduceMotion ? false : { y: "110%", opacity: 0 }}
-                      animate={{ y: "0%", opacity: 1 }}
-                      transition={{ delay: delay + i * stagger, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                    <span
+                      className={`animate-word-rise inline-block ${segment.className ?? ""}`}
+                      style={{ animationDelay: `${(delay + i * stagger).toFixed(2)}s` }}
                     >
                       {word}
-                    </motion.span>
+                    </span>
                   </span>{" "}
                 </Fragment>
               );
